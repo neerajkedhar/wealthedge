@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GetNews {
   var newsList;
