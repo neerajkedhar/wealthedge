@@ -1,4 +1,4 @@
-package com.example.wealthedge
+package com.kedhar.wealthedge
 
 import io.flutter.embedding.android.FlutterActivity
 

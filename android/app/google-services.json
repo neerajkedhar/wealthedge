@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "877905460475",
+    "project_id": "wealthedge4u",
+    "storage_bucket": "wealthedge4u.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877905460475:android:94fc2a0fb7a7c89e2f845e",
+        "android_client_info": {
+          "package_name": "com.kedhar.wealthedge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877905460475-edlt6p8g5m50ff37jk8j3j7l8u4gm6fr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMOZJR_Fnk6K3sjfnIym4oUb5gWKT_Sv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877905460475-edlt6p8g5m50ff37jk8j3j7l8u4gm6fr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

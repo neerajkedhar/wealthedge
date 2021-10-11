@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:wealthedge/screens/ipodetails.dart';
 import 'package:wealthedge/screens/newsopen.dart';
 
 Widget anotherNews(
@@ -8,7 +10,6 @@ Widget anotherNews(
 ) {
   var source = newsList[index]['source']['name'] ?? "Unavailable";
   var title = newsList[index]['title'] ?? "Unavailable";
-  //var description = iposNewsList[index]['description'];
   var urlToImage = newsList[index]['urlToImage'] ??
       "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
   var url = newsList[index]['url'] ?? null;
@@ -78,9 +79,22 @@ Widget anotherNews(
   );
 }
 
-Widget ipowidget(context) {
+Widget ipowidget(var list, var index, BuildContext context) {
+  var ipo = list[index];
+  var logo = ipo["png"] ??
+      "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
+  var companyName = ipo["ipo-details"]['company-name'] ?? "no Name";
+  var biddingDates = ipo["ipo-details"]['bidding-dates'] ?? "No dates";
+  var issuePrize = ipo["ipo-details"]['issue-price'] ?? "no price";
+  var marketLot = ipo["ipo-details"]['market-lot'] ?? "no lot";
+
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => IPODetails(ipo)),
+      );
+    },
     child: Container(
       height: 150,
       margin: EdgeInsets.all(10),
@@ -94,10 +108,13 @@ Widget ipowidget(context) {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.network(
-                "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
-                width: 110,
-                height: 110,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.network(
+                  logo,
+                  width: 110,
+                  height: 110,
+                ),
               ),
               //SizedBox(width: 10),
               Container(
@@ -109,7 +126,7 @@ Widget ipowidget(context) {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Company Name",
+                        companyName,
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
@@ -129,7 +146,7 @@ Widget ipowidget(context) {
                                         fontSize: 10,
                                       )),
                                   SizedBox(height: 10),
-                                  Text("12 -15 Aug 2021",
+                                  Text(biddingDates,
                                       style: TextStyle(
                                         fontSize: 10,
                                       ))
@@ -147,7 +164,7 @@ Widget ipowidget(context) {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    "1234",
+                                    issuePrize,
                                     style: TextStyle(
                                       fontSize: 10,
                                     ),
@@ -159,14 +176,14 @@ Widget ipowidget(context) {
                               child: Column(
                                 children: [
                                   Text(
-                                    "issue price",
+                                    "Market Lot",
                                     style: TextStyle(
                                       fontSize: 10,
                                     ),
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    "1234",
+                                    marketLot,
                                     style: TextStyle(
                                       fontSize: 10,
                                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wealthedge/screens/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,10 +32,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Home(),
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+              child: Text(
+                  "Something has wet wrong... Please check your internet connection and try again later."));
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Scaffold(
+            body: Home(),
+          );
+        }
+
+        return CircularProgressIndicator();
+      },
     );
   }
 }
